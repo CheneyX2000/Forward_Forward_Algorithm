@@ -11,7 +11,7 @@ class FFNetwork:
                 FFLayer(input_dim=layer_sizes[i], output_dim=layer_sizes[i+1])
                 )
         
-    def construct_samples(self, x: np.array, y: int) -> tuple:
+    def construct_samples(self, x: np.array, y: np.int32) -> tuple:
         # x as the sample, and y as the label
         positive = np.zeros((self.layer_sizes[0],))
         negative = np.zeros((self.layer_sizes[0],))
@@ -78,6 +78,6 @@ class FFNetwork:
         probabilities = self.softmax(goodness_scores)
         return probabilities
     
-    def predict(self, x) -> int:
+    def predict(self, x) -> np.int32:
         probabilities = self.predict_probabilities(x)
         return np.argmax(probabilities)

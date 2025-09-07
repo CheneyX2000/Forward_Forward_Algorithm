@@ -4,7 +4,9 @@ class FFLayer:
     def __init__(self, input_dim, output_dim, learning_rate=0.1):
         self.in_dim = input_dim
         self.out_dim = output_dim
-        self.W = np.random.randn(self.in_dim, self.out_dim)
+
+        # use Xavior/Glorot initialization for weights, because we will use tanh as activation func
+        self.W = np.random.randn(self.in_dim, self.out_dim) * np.sqrt(2 / self.in_dim)
         self.b = np.zeros((self.out_dim,))  # bias init to zero
         self.eta = learning_rate
 

@@ -1,6 +1,14 @@
 import numpy as np
 
 class FFLayer:
+    """
+    FFLayer is a class that implements a single layer in a Forward-Forward Neuron Network
+
+    It trains on layer "goodness".
+    This impl use tanh() as activation func, and use Xavier initialization for weights.
+    Learning rate 0.1 by default, bias is initialized to 0s.
+    For Goodness computation, this impl uses sum(Activation ^ 2) as written the essay of Geoffery Hinton.
+    """
     def __init__(self, input_dim, output_dim, learning_rate=0.1):
         self.in_dim = input_dim
         self.out_dim = output_dim

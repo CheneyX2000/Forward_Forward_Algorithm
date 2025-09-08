@@ -2,6 +2,14 @@ import numpy as np
 from FFLayer import FFLayer
 
 class FFNetwork:
+    """
+    FFNetwork is a class that implements the Forward-Forward Neuron Network
+
+    This impl is primarily designed for classification tasks.
+    The network is composed of a series of FFLayers.
+    It supports layer-by-layer training and trains on overall "goodness".
+    Epoch is defaultly set to 10.
+    """
     def __init__(self, layer_sizes: list):
         # for example, for MNIST data set, the input dim is 784(for pic) + 10(for one-hot) = 794
         self.layers = []
@@ -43,7 +51,23 @@ class FFNetwork:
         self.layers[layer_idx].update_weights(positive_data, a_p, True)
         self.layers[layer_idx].update_weights(negative_data, a_n, False)
     
-    def softmax(self, x):
+    def train(self, X_train, y_train, epochs=10):
+        for epoch in range(epochs):
+            for i in range(len(X_train)):
+                x, y = X_train[i], y_train[i]
+
+                # construct samples
+                pos_sample, neg_sample = self.construct_samples(x, y)
+
+                # train layer-by-layer
+                pos_input, neg_input = pos_sample, neg_sample
+                for layer_idx in range(len(self.layers)):
+                    self.train_layer(layer_idx, pos_input, neg_input)
+
+                    pos_input = self.layers[layer_idx].forward(pos_input)
+                    neg_input = self.layers[layer_idx].forward(neg_input)
+    
+    def softmax(self, x) -> np.array:
         exp_x = np.exp(x - np.max(x))
         return exp_x / np.sum(exp_x)
 

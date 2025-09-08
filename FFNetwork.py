@@ -23,6 +23,7 @@ class FFNetwork:
         # this is a logic timer for the network trainning
         self.layer_round = 0
         
+
     def construct_samples(self, x: np.array, y: np.int32) -> tuple:
         # x as the sample, and y as the label
         positive = np.zeros((self.layer_sizes[0],))
@@ -45,36 +46,109 @@ class FFNetwork:
 
         return (positive, negative)
 
+
     def train_layer(self, layer_idx, positive_data, negative_data):
+        # compute activation
         a_p = self.layers[layer_idx].forward(positive_data)
         a_n = self.layers[layer_idx].forward(negative_data)
 
+        # compute positive and negative goodness for the layer
         g_p = self.layers[layer_idx].compute_goodness(a_p)
         g_n = self.layers[layer_idx].compute_goodness(a_n)
 
+        # update weights
         self.layers[layer_idx].update_weights(positive_data, a_p, True)
         self.layers[layer_idx].update_weights(negative_data, a_n, False)
+
+        return (g_p, g_n)
     
-    def train(self, X_train, y_train, epochs=10):
+
+    def train(self, X_train, y_train, X_test, y_test, epochs=10):
+        """
+        train the entire network
+
+        takes X_trian, y_train, X_test, y_test as inputs
+        epoch default to 10 as FF generally use a smaller epoch
+        """
+        # reset the logic time counter
+        self.layer_round = 0
+
         for epoch in range(epochs):
+            epoch_stats = {
+                'layer_pos_goodness': [[] for _ in self.layers],
+                'layer_neg_goodness': [[] for _ in self.layers],
+                'total_goodness': []
+            }
+            
+            # train by each sample
             for i in range(len(X_train)):
                 x, y = X_train[i], y_train[i]
 
                 # construct samples
                 pos_sample, neg_sample = self.construct_samples(x, y)
-
-                # train layer-by-layer
                 pos_input, neg_input = pos_sample, neg_sample
+                total_goodness_diff = 0
+                # train layer-by-layer
                 for layer_idx in range(len(self.layers)):
-                    self.train_layer(layer_idx, pos_input, neg_input)
+                    (layer_pos_goodness, 
+                    layer_neg_goodness
+                        ) = self.train_layer(layer_idx, pos_input, neg_input)
+
+                    # record p_g and n_g of the layer in epoch_stats
+                    epoch_stats["layer_pos_goodness"][layer_idx].append(layer_pos_goodness)
+                    epoch_stats["layer_neg_goodness"][layer_idx].append(layer_neg_goodness)
+
+                    total_goodness_diff += (layer_pos_goodness - layer_neg_goodness)
+
+                    # for each layer trained, plus one to the logic timer
                     self.layer_round += 1
 
+                    # forward compute the output which will be the input of the next layer
                     pos_input = self.layers[layer_idx].forward(pos_input)
                     neg_input = self.layers[layer_idx].forward(neg_input)
+
+                epoch_stats['total_goodness'].append(total_goodness_diff)
+
+            # print the epoch stats
+            self._print_epoch_stats(epoch, epoch_stats)
+            # compute and print the accuracy
+            test_acc = self.evaluate(X_test, y_test)
+            print(f"Test accuracy: {test_acc:.4f}")
+            print(f"Logic timer for train time for all layers: {self.layer_round}")
+            print("---------------------------------------------------------------")
     
-    def softmax(self, x) -> np.array:
+
+    def evaluate(self, X_test, y_test):
+        """
+        compute the accuracy on the test data set
+        """
+        correct = 0
+        for i in range(len(X_test)):
+            pred = self.predict(X_test[i])
+            if pred == y_test[i]:
+                correct += 1
+        return correct / len(X_test)
+    
+
+    def _print_epoch_stats(self, epoch, epoch_stats):
+        """
+        print epoch_stats
+        """
+        print(f"Epoch {epoch + 1}:")
+        for layer_idx in range(len(self.layers)):
+            avg_pos = np.mean(epoch_stats['layer_pos_goodness'][layer_idx])
+            avg_neg = np.mean(epoch_stats['layer_neg_goodness'][layer_idx])
+            gap = avg_pos - avg_neg
+            print(f"  Layer {layer_idx}: Pos={avg_pos:.4f}, Neg={avg_neg:.4f}, Gap={gap:.4f}")
+
+        avg_total = np.mean(epoch_stats['total_goodness'])
+        print(f"  Average total goodness difference: {avg_total:.4f}")
+
+
+    def _softmax(self, x) -> np.array:
         exp_x = np.exp(x - np.max(x))
         return exp_x / np.sum(exp_x)
+
 
     def predict_probabilities(self, x) -> np.array:
         num_classes = self.layer_sizes[-1]
@@ -104,9 +178,10 @@ class FFNetwork:
             
             goodness_scores[label] = total_goodness
 
-        probabilities = self.softmax(goodness_scores)
+        probabilities = self._softmax(goodness_scores)
         return probabilities
     
+
     def predict(self, x) -> np.int32:
         probabilities = self.predict_probabilities(x)
         return np.argmax(probabilities)

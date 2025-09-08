@@ -19,6 +19,10 @@ class FFNetwork:
                 FFLayer(input_dim=layer_sizes[i], output_dim=layer_sizes[i+1])
                 )
         
+        # for each layer trained, layer_round plus one
+        # this is a logic timer for the network trainning
+        self.layer_round = 0
+        
     def construct_samples(self, x: np.array, y: np.int32) -> tuple:
         # x as the sample, and y as the label
         positive = np.zeros((self.layer_sizes[0],))
@@ -63,6 +67,7 @@ class FFNetwork:
                 pos_input, neg_input = pos_sample, neg_sample
                 for layer_idx in range(len(self.layers)):
                     self.train_layer(layer_idx, pos_input, neg_input)
+                    self.layer_round += 1
 
                     pos_input = self.layers[layer_idx].forward(pos_input)
                     neg_input = self.layers[layer_idx].forward(neg_input)

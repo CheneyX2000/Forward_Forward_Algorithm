@@ -7,7 +7,9 @@ This repository is for educational and experimental research.
 The FFN (Forward-Forward Neural Network) is a network that can achieve cross-layer concurrency by pipelining. This is done by separating gradients descending process of each layer.
 Each layer's gradient descent is based on a "Goodness function," which is essentially a Contrastive Learning process.
 The "Goodness" = Positive_activation - Negative_activation.
+
 The goal is to independently increase the Goodness of each layer so that each layer can be trained with no dependency on preceding layers. This mechanism enables almost parallel training across layers; each layer does not have to wait for propagation like in a typical back-propagation network.
+
 The weakness of this mechanism is that it is naturally "Greedy": each preceding layer attempts to capture patterns and leaves the uncaptured information to subsequent layers. Consequently, the FFN may more frequently converge to a suboptimal solution compared to a BP network.
 
 In this implementation, we use the following design:

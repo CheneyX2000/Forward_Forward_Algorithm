@@ -10,13 +10,13 @@ class FFNetwork:
     It supports layer-by-layer training and trains on overall "goodness".
     Epoch is defaultly set to 10.
     """
-    def __init__(self, layer_sizes: list):
+    def __init__(self, layer_sizes: List[int], eta=0.01):
         # for example, for MNIST data set, the input dim is 784(for pic) + 10(for one-hot) = 794
         self.layers = []
         self.layer_sizes = layer_sizes
         for i in range(len(layer_sizes)-1):
             self.layers.append(
-                FFLayer(input_dim=layer_sizes[i], output_dim=layer_sizes[i+1])
+                FFLayer(input_dim=layer_sizes[i], output_dim=layer_sizes[i+1], learning_rate=eta)
                 )
         
         # for each layer trained, layer_round plus one

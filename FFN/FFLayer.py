@@ -9,7 +9,7 @@ class FFLayer:
     Learning rate 0.1 by default, bias is initialized to 0s.
     For Goodness computation, this impl uses sum(Activation ^ 2) as written the essay of Geoffery Hinton.
     """
-    def __init__(self, input_dim, output_dim, learning_rate=0.1):
+    def __init__(self, input_dim, output_dim, learning_rate=0.01):
         self.in_dim = input_dim
         self.out_dim = output_dim
 

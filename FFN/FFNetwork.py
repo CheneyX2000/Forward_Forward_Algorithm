@@ -1,5 +1,5 @@
 import numpy as np
-from FFLayer import FFLayer
+from .FFLayer import FFLayer
 
 class FFNetwork:
     """
@@ -10,7 +10,7 @@ class FFNetwork:
     It supports layer-by-layer training and trains on overall "goodness".
     Epoch is defaultly set to 10.
     """
-    def __init__(self, layer_sizes: List[int], eta=0.01):
+    def __init__(self, layer_sizes: list, eta=0.01):
         # for example, for MNIST data set, the input dim is 784(for pic) + 10(for one-hot) = 794
         self.layers = []
         self.layer_sizes = layer_sizes

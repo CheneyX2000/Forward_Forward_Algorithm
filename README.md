@@ -1,4 +1,5 @@
 This is a numpy implementation of the Forward-Forward Algorithm.
+
 ["The Forward-Forward Algorithm: A New Way of Training Neural Networks" by Geoffrey Hinton](https://arxiv.org/abs/2212.13345)
 
 This repository is for educational and experimental research.
@@ -18,8 +19,8 @@ Project Structure:
 - FFN/ (The numpy implementation of FFN and its layer)
 - math_notes/ (The math process for FFN)
 - log/ (Manually stored txt log for test and training scripts)
-- train/ (The test and training scripts)
 - README.md
+- ...test and training scripts...
 
 Download the code by:
 ```

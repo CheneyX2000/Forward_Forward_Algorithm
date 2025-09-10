@@ -2,6 +2,7 @@
 
 Have trained with specs:
 eta = [0.01, 0.004],
+tanh as activation, Xavier Initialization,
 and layers in shapes:
 [794, 200, 10],          # shallow
 [794, 500, 300, 10],     # medium
@@ -16,4 +17,5 @@ as written in Hinton's paper.
 Next step:
 New training script with bigger data set (full MNIST), wider hidden layers (4 x 2000), smaller learning rate (0.0001).
 Try ReLu as the activation func.
+With ReLu, we will need He Initialization.
 Probably need to refactor the impl in order to use GPU and save training time.

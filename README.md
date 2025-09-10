@@ -4,7 +4,7 @@ This is a numpy implementation of the Forward-Forward Algorithm.
 
 This repository is for educational and experimental research.
 
-The FFN (Forward-Forward Neural Network) is a network that can achieve cross-layer concurrency by pipelining. This is done by separating gradients descending process of each layer.
+The FFN (Forward-Forward Neural Network) is a network that can achieve cross-layer parallel training by pipelining. This is done by separating gradients descending process of each layer.
 Each layer's gradient descent is based on a "Goodness function," which is essentially a Contrastive Learning process.
 The "Goodness" = Positive_activation - Negative_activation.
 

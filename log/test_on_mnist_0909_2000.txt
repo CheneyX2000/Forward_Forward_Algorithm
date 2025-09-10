@@ -1,0 +1,374 @@
+Forward-Forward Algo test
+==================================================
+
+=== base test ===
+Sample construction: pos.shape=(794,), neg.shape=(794,)
+Positive label position: 3
+Negative label position: 7
+Random prediction: 2, max_prob: 0.2102
+base test passed
+
+=== small scale experiment ===
+Loading MNIST dataset...
+Train set: (60000, 784), Test set: (10000, 784)
+Pixel range: [0.000, 1.000]
+Network architecture: [794, 500, 300, 10]
+
+start trainin...
+Epoch 1:
+  Layer 0: Pos=166.7123, Neg=138.4636, Gap=28.2486
+  Layer 1: Pos=193.9120, Neg=170.8270, Gap=23.0851
+  Layer 2: Pos=6.9565, Neg=6.3840, Gap=0.5725
+  Average total goodness difference: 51.9062
+Test accuracy: 0.5530
+Logic timer for train time for all layers: 3000
+---------------------------------------------------------------
+Epoch 2:
+  Layer 0: Pos=293.9829, Neg=212.6731, Gap=81.3098
+  Layer 1: Pos=275.2148, Neg=244.9005, Gap=30.3143
+  Layer 2: Pos=9.0514, Neg=8.2274, Gap=0.8241
+  Average total goodness difference: 112.4482
+Test accuracy: 0.6200
+Logic timer for train time for all layers: 6000
+---------------------------------------------------------------
+Epoch 3:
+  Layer 0: Pos=351.3394, Neg=245.1387, Gap=106.2007
+  Layer 1: Pos=285.1956, Neg=242.6575, Gap=42.5381
+  Layer 2: Pos=9.4154, Neg=7.7543, Gap=1.6611
+  Average total goodness difference: 150.3999
+Test accuracy: 0.6830
+Logic timer for train time for all layers: 9000
+---------------------------------------------------------------
+Epoch 4:
+  Layer 0: Pos=383.6923, Neg=263.8995, Gap=119.7928
+  Layer 1: Pos=288.0246, Neg=234.1038, Gap=53.9208
+  Layer 2: Pos=9.5198, Neg=7.5239, Gap=1.9959
+  Average total goodness difference: 175.7095
+Test accuracy: 0.7020
+Logic timer for train time for all layers: 12000
+---------------------------------------------------------------
+Epoch 5:
+  Layer 0: Pos=405.6126, Neg=270.9375, Gap=134.6751
+  Layer 1: Pos=289.9592, Neg=226.7698, Gap=63.1894
+  Layer 2: Pos=9.6203, Neg=7.2337, Gap=2.3866
+  Average total goodness difference: 200.2511
+Test accuracy: 0.6910
+Logic timer for train time for all layers: 15000
+---------------------------------------------------------------
+Epoch 6:
+  Layer 0: Pos=419.1262, Neg=273.6655, Gap=145.4607
+  Layer 1: Pos=290.9262, Neg=220.0631, Gap=70.8631
+  Layer 2: Pos=9.6775, Neg=7.0820, Gap=2.5955
+  Average total goodness difference: 218.9193
+Test accuracy: 0.7210
+Logic timer for train time for all layers: 18000
+---------------------------------------------------------------
+Epoch 7:
+  Layer 0: Pos=428.2712, Neg=281.9951, Gap=146.2761
+  Layer 1: Pos=291.8487, Neg=221.3599, Gap=70.4887
+  Layer 2: Pos=9.6726, Neg=7.0021, Gap=2.6705
+  Average total goodness difference: 219.4353
+Test accuracy: 0.6790
+Logic timer for train time for all layers: 21000
+---------------------------------------------------------------
+Epoch 8:
+  Layer 0: Pos=435.5682, Neg=281.3852, Gap=154.1830
+  Layer 1: Pos=292.2739, Neg=218.5267, Gap=73.7471
+  Layer 2: Pos=9.6897, Neg=6.9975, Gap=2.6922
+  Average total goodness difference: 230.6224
+Test accuracy: 0.7180
+Logic timer for train time for all layers: 24000
+---------------------------------------------------------------
+Epoch 9:
+  Layer 0: Pos=441.1036, Neg=284.0066, Gap=157.0970
+  Layer 1: Pos=293.0037, Neg=218.2070, Gap=74.7967
+  Layer 2: Pos=9.6606, Neg=7.0401, Gap=2.6205
+  Average total goodness difference: 234.5142
+Test accuracy: 0.6910
+Logic timer for train time for all layers: 27000
+---------------------------------------------------------------
+Epoch 10:
+  Layer 0: Pos=444.8611, Neg=283.5220, Gap=161.3392
+  Layer 1: Pos=292.8933, Neg=215.5474, Gap=77.3459
+  Layer 2: Pos=9.7166, Neg=6.8642, Gap=2.8524
+  Average total goodness difference: 241.5375
+Test accuracy: 0.6990
+Logic timer for train time for all layers: 30000
+---------------------------------------------------------------
+
+training completed, time used: 312.64 second
+
+=== detailed evaluation ===
+accuracy on the test set: 0.6990
+
+sample prediction analysis:
+sample0: true_label=7, predicted_label=7, confidence=1.0000
+sample1: true_label=2, predicted_label=0, confidence=1.0000
+sample2: true_label=1, predicted_label=1, confidence=1.0000
+sample3: true_label=0, predicted_label=0, confidence=1.0000
+sample4: true_label=4, predicted_label=4, confidence=1.0000
+
+ run performance comparison? type 'y' to continue
+
+=== performance comparison of different architectures ===
+Loading MNIST dataset...
+Train set: (60000, 784), Test set: (10000, 784)
+Pixel range: [0.000, 1.000]
+
+test architecture: [794, 200, 10]
+Epoch 1:
+  Layer 0: Pos=47.6534, Neg=42.1798, Gap=5.4736
+  Layer 1: Pos=4.2048, Neg=3.6030, Gap=0.6017
+  Average total goodness difference: 6.0754
+Test accuracy: 0.5340
+Logic timer for train time for all layers: 1000
+---------------------------------------------------------------
+Epoch 2:
+  Layer 0: Pos=87.7392, Neg=67.4402, Gap=20.2991
+  Layer 1: Pos=6.9546, Neg=5.3887, Gap=1.5659
+  Average total goodness difference: 21.8649
+Test accuracy: 0.5560
+Logic timer for train time for all layers: 2000
+---------------------------------------------------------------
+Epoch 3:
+  Layer 0: Pos=113.2712, Neg=78.7952, Gap=34.4760
+  Layer 1: Pos=7.7318, Neg=5.3490, Gap=2.3828
+  Average total goodness difference: 36.8588
+Test accuracy: 0.6520
+Logic timer for train time for all layers: 3000
+---------------------------------------------------------------
+Epoch 4:
+  Layer 0: Pos=130.5399, Neg=87.3443, Gap=43.1957
+  Layer 1: Pos=8.4719, Neg=5.5589, Gap=2.9130
+  Average total goodness difference: 46.1086
+Test accuracy: 0.6440
+Logic timer for train time for all layers: 4000
+---------------------------------------------------------------
+Epoch 5:
+  Layer 0: Pos=142.9640, Neg=96.3170, Gap=46.6470
+  Layer 1: Pos=8.9869, Neg=5.5814, Gap=3.4055
+  Average total goodness difference: 50.0525
+Test accuracy: 0.6140
+Logic timer for train time for all layers: 5000
+---------------------------------------------------------------
+Epoch 6:
+  Layer 0: Pos=150.8387, Neg=99.2146, Gap=51.6242
+  Layer 1: Pos=9.1873, Neg=5.6792, Gap=3.5081
+  Average total goodness difference: 55.1323
+Test accuracy: 0.6600
+Logic timer for train time for all layers: 6000
+---------------------------------------------------------------
+Epoch 7:
+  Layer 0: Pos=158.2357, Neg=100.4649, Gap=57.7708
+  Layer 1: Pos=9.3995, Neg=5.6032, Gap=3.7963
+  Average total goodness difference: 61.5671
+Test accuracy: 0.6800
+Logic timer for train time for all layers: 7000
+---------------------------------------------------------------
+Epoch 8:
+  Layer 0: Pos=162.7572, Neg=103.9913, Gap=58.7660
+  Layer 1: Pos=9.5249, Neg=5.7838, Gap=3.7410
+  Average total goodness difference: 62.5070
+Test accuracy: 0.6640
+Logic timer for train time for all layers: 8000
+---------------------------------------------------------------
+Epoch 9:
+  Layer 0: Pos=166.5963, Neg=103.8661, Gap=62.7301
+  Layer 1: Pos=9.5714, Neg=5.8100, Gap=3.7614
+  Average total goodness difference: 66.4915
+Test accuracy: 0.6700
+Logic timer for train time for all layers: 9000
+---------------------------------------------------------------
+Epoch 10:
+  Layer 0: Pos=170.1572, Neg=104.0239, Gap=66.1333
+  Layer 1: Pos=9.6116, Neg=5.5622, Gap=4.0495
+  Average total goodness difference: 70.1828
+Test accuracy: 0.6680
+Logic timer for train time for all layers: 10000
+---------------------------------------------------------------
+accuracy: 0.6680, training time: 56.16 second
+
+test architecture: [794, 500, 300, 10]
+Epoch 1:
+  Layer 0: Pos=122.4196, Neg=109.1122, Gap=13.3074
+  Layer 1: Pos=155.7579, Neg=135.5101, Gap=20.2477
+  Layer 2: Pos=6.2230, Neg=5.6919, Gap=0.5311
+  Average total goodness difference: 34.0862
+Test accuracy: 0.5140
+Logic timer for train time for all layers: 1500
+---------------------------------------------------------------
+Epoch 2:
+  Layer 0: Pos=218.4773, Neg=168.4875, Gap=49.9897
+  Layer 1: Pos=236.8918, Neg=204.7724, Gap=32.1194
+  Layer 2: Pos=8.2935, Neg=7.5411, Gap=0.7524
+  Average total goodness difference: 82.8616
+Test accuracy: 0.6440
+Logic timer for train time for all layers: 3000
+---------------------------------------------------------------
+Epoch 3:
+  Layer 0: Pos=280.6530, Neg=199.6137, Gap=81.0393
+  Layer 1: Pos=266.2880, Neg=227.9455, Gap=38.3424
+  Layer 2: Pos=8.7585, Neg=7.5935, Gap=1.1651
+  Average total goodness difference: 120.5468
+Test accuracy: 0.6540
+Logic timer for train time for all layers: 4500
+---------------------------------------------------------------
+Epoch 4:
+  Layer 0: Pos=323.1430, Neg=221.9752, Gap=101.1677
+  Layer 1: Pos=278.9791, Neg=234.3994, Gap=44.5797
+  Layer 2: Pos=9.2360, Neg=7.5636, Gap=1.6725
+  Average total goodness difference: 147.4199
+Test accuracy: 0.6720
+Logic timer for train time for all layers: 6000
+---------------------------------------------------------------
+Epoch 5:
+  Layer 0: Pos=354.0947, Neg=243.1003, Gap=110.9944
+  Layer 1: Pos=284.2539, Neg=235.1794, Gap=49.0746
+  Layer 2: Pos=9.2719, Neg=7.4120, Gap=1.8599
+  Average total goodness difference: 161.9288
+Test accuracy: 0.6660
+Logic timer for train time for all layers: 7500
+---------------------------------------------------------------
+Epoch 6:
+  Layer 0: Pos=374.8900, Neg=249.2733, Gap=125.6167
+  Layer 1: Pos=287.8325, Neg=229.6866, Gap=58.1459
+  Layer 2: Pos=9.5173, Neg=7.1964, Gap=2.3210
+  Average total goodness difference: 186.0836
+Test accuracy: 0.6760
+Logic timer for train time for all layers: 9000
+---------------------------------------------------------------
+Epoch 7:
+  Layer 0: Pos=390.2440, Neg=256.9237, Gap=133.3203
+  Layer 1: Pos=288.8145, Neg=224.8013, Gap=64.0132
+  Layer 2: Pos=9.5877, Neg=7.0909, Gap=2.4968
+  Average total goodness difference: 199.8303
+Test accuracy: 0.7180
+Logic timer for train time for all layers: 10500
+---------------------------------------------------------------
+Epoch 8:
+  Layer 0: Pos=404.0399, Neg=263.3493, Gap=140.6905
+  Layer 1: Pos=290.3346, Neg=221.5875, Gap=68.7471
+  Layer 2: Pos=9.7277, Neg=7.0529, Gap=2.6749
+  Average total goodness difference: 212.1125
+Test accuracy: 0.7160
+Logic timer for train time for all layers: 12000
+---------------------------------------------------------------
+Epoch 9:
+  Layer 0: Pos=413.7045, Neg=267.0865, Gap=146.6181
+  Layer 1: Pos=291.1512, Neg=219.6943, Gap=71.4569
+  Layer 2: Pos=9.7643, Neg=6.9807, Gap=2.7836
+  Average total goodness difference: 220.8586
+Test accuracy: 0.6740
+Logic timer for train time for all layers: 13500
+---------------------------------------------------------------
+Epoch 10:
+  Layer 0: Pos=421.0110, Neg=268.5375, Gap=152.4735
+  Layer 1: Pos=292.6717, Neg=216.2073, Gap=76.4645
+  Layer 2: Pos=9.7386, Neg=6.8702, Gap=2.8685
+  Average total goodness difference: 231.8064
+Test accuracy: 0.6920
+Logic timer for train time for all layers: 15000
+---------------------------------------------------------------
+accuracy: 0.6920, training time: 132.83 second
+
+test architecture: [794, 800, 400, 200, 10]
+Epoch 1:
+  Layer 0: Pos=193.1257, Neg=172.9143, Gap=20.2114
+  Layer 1: Pos=231.3489, Neg=207.2795, Gap=24.0695
+  Layer 2: Pos=131.4814, Neg=121.3958, Gap=10.0856
+  Layer 3: Pos=6.3642, Neg=5.9421, Gap=0.4221
+  Average total goodness difference: 54.7887
+Test accuracy: 0.5500
+Logic timer for train time for all layers: 2000
+---------------------------------------------------------------
+Epoch 2:
+  Layer 0: Pos=351.6936, Neg=270.0037, Gap=81.6899
+  Layer 1: Pos=353.3391, Neg=330.1574, Gap=23.1817
+  Layer 2: Pos=174.3150, Neg=166.8933, Gap=7.4217
+  Layer 3: Pos=7.7093, Neg=7.2880, Gap=0.4212
+  Average total goodness difference: 112.7145
+Test accuracy: 0.6360
+Logic timer for train time for all layers: 4000
+---------------------------------------------------------------
+Epoch 3:
+  Layer 0: Pos=455.4250, Neg=330.1930, Gap=125.2320
+  Layer 1: Pos=382.6482, Neg=360.1767, Gap=22.4715
+  Layer 2: Pos=188.3975, Neg=179.8973, Gap=8.5001
+  Layer 3: Pos=8.3672, Neg=7.4416, Gap=0.9256
+  Average total goodness difference: 157.1291
+Test accuracy: 0.6320
+Logic timer for train time for all layers: 6000
+---------------------------------------------------------------
+Epoch 4:
+  Layer 0: Pos=520.6614, Neg=354.6790, Gap=165.9824
+  Layer 1: Pos=388.9376, Neg=359.4893, Gap=29.4483
+  Layer 2: Pos=192.1168, Neg=179.5638, Gap=12.5530
+  Layer 3: Pos=8.6453, Neg=7.1404, Gap=1.5050
+  Average total goodness difference: 209.4887
+Test accuracy: 0.6840
+Logic timer for train time for all layers: 8000
+---------------------------------------------------------------
+Epoch 5:
+  Layer 0: Pos=566.3428, Neg=374.2650, Gap=192.0778
+  Layer 1: Pos=391.2415, Neg=356.5718, Gap=34.6697
+  Layer 2: Pos=192.9344, Neg=175.9528, Gap=16.9816
+  Layer 3: Pos=8.8351, Neg=7.1053, Gap=1.7298
+  Average total goodness difference: 245.4589
+Test accuracy: 0.6660
+Logic timer for train time for all layers: 10000
+---------------------------------------------------------------
+Epoch 6:
+  Layer 0: Pos=600.9943, Neg=394.6060, Gap=206.3882
+  Layer 1: Pos=392.9394, Neg=352.3821, Gap=40.5573
+  Layer 2: Pos=192.9330, Neg=171.9384, Gap=20.9947
+  Layer 3: Pos=8.9952, Neg=6.8628, Gap=2.1324
+  Average total goodness difference: 270.0726
+Test accuracy: 0.6980
+Logic timer for train time for all layers: 12000
+---------------------------------------------------------------
+Epoch 7:
+  Layer 0: Pos=627.1438, Neg=415.4097, Gap=211.7340
+  Layer 1: Pos=393.3319, Neg=351.2401, Gap=42.0918
+  Layer 2: Pos=192.2903, Neg=169.1543, Gap=23.1360
+  Layer 3: Pos=9.2440, Neg=7.0773, Gap=2.1668
+  Average total goodness difference: 279.1285
+Test accuracy: 0.7020
+Logic timer for train time for all layers: 14000
+---------------------------------------------------------------
+Epoch 8:
+  Layer 0: Pos=645.7963, Neg=410.1754, Gap=235.6209
+  Layer 1: Pos=394.0530, Neg=346.7177, Gap=47.3353
+  Layer 2: Pos=193.1441, Neg=165.8149, Gap=27.3293
+  Layer 3: Pos=9.2275, Neg=6.7361, Gap=2.4914
+  Average total goodness difference: 312.7769
+Test accuracy: 0.7200
+Logic timer for train time for all layers: 16000
+---------------------------------------------------------------
+Epoch 9:
+  Layer 0: Pos=662.1363, Neg=421.3775, Gap=240.7588
+  Layer 1: Pos=394.9076, Neg=344.7798, Gap=50.1278
+  Layer 2: Pos=193.7857, Neg=164.3447, Gap=29.4409
+  Layer 3: Pos=9.3166, Neg=6.6073, Gap=2.7094
+  Average total goodness difference: 323.0369
+Test accuracy: 0.7240
+Logic timer for train time for all layers: 18000
+---------------------------------------------------------------
+Epoch 10:
+  Layer 0: Pos=678.5812, Neg=432.9718, Gap=245.6093
+  Layer 1: Pos=395.3775, Neg=344.0204, Gap=51.3571
+  Layer 2: Pos=194.2471, Neg=164.6130, Gap=29.6341
+  Layer 3: Pos=9.3154, Neg=6.7516, Gap=2.5638
+  Average total goodness difference: 329.1643
+Test accuracy: 0.7520
+Logic timer for train time for all layers: 20000
+---------------------------------------------------------------
+accuracy: 0.7520, training time: 309.86 second
+
+=== performance comparison of different architectures  ===
+architecture		number_of_layer	paremeter_number	accuracy	training_time
+------------------------------------------------------------
+[794, 200, 10]      	2	160800	0.6680	56.16s
+[794, 500, 300, 10] 	3	550000	0.6920	132.83s
+[794, 800, 400, 200,	4	1037200	0.7520	309.86s
+
+test completed

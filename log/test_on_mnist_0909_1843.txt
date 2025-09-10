@@ -1,0 +1,113 @@
+Forward-Forward Algo test
+==================================================
+
+=== base test ===
+Sample construction: pos.shape=(794,), neg.shape=(794,)
+Positive label position: 3
+Negative label position: 6
+Random prediction: 0, max_prob: 0.1627
+base test passed
+
+=== small scale experiment ===
+Loading MNIST dataset...
+Train set: (60000, 784), Test set: (10000, 784)
+Pixel range: [0.000, 1.000]
+Network architecture: [794, 500, 300, 10]
+
+start trainin...
+Epoch 1:
+  Layer 0: Pos=430.5720, Neg=425.6868, Gap=4.8852
+  Layer 1: Pos=290.7281, Neg=289.9167, Gap=0.8114
+  Layer 2: Pos=9.0616, Neg=9.0436, Gap=0.0180
+  Average total goodness difference: 5.7146
+Test accuracy: 0.2480
+Logic timer for train time for all layers: 3000
+---------------------------------------------------------------
+Epoch 2:
+  Layer 0: Pos=477.9080, Neg=475.2218, Gap=2.6862
+  Layer 1: Pos=298.8818, Neg=298.7639, Gap=0.1178
+  Layer 2: Pos=9.5409, Neg=9.5376, Gap=0.0034
+  Average total goodness difference: 2.8074
+Test accuracy: 0.3110
+Logic timer for train time for all layers: 6000
+---------------------------------------------------------------
+Epoch 3:
+  Layer 0: Pos=482.7531, Neg=481.0049, Gap=1.7482
+  Layer 1: Pos=299.0996, Neg=299.0163, Gap=0.0833
+  Layer 2: Pos=9.4289, Neg=9.4272, Gap=0.0017
+  Average total goodness difference: 1.8331
+Test accuracy: 0.2570
+Logic timer for train time for all layers: 9000
+---------------------------------------------------------------
+Epoch 4:
+  Layer 0: Pos=485.1875, Neg=483.7519, Gap=1.4356
+  Layer 1: Pos=299.5593, Neg=299.5221, Gap=0.0372
+  Layer 2: Pos=9.4997, Neg=9.4998, Gap=-0.0001
+  Average total goodness difference: 1.4727
+Test accuracy: 0.2670
+Logic timer for train time for all layers: 12000
+---------------------------------------------------------------
+Epoch 5:
+  Layer 0: Pos=487.9826, Neg=486.7458, Gap=1.2369
+  Layer 1: Pos=299.6347, Neg=299.6137, Gap=0.0210
+  Layer 2: Pos=9.3570, Neg=9.3562, Gap=0.0007
+  Average total goodness difference: 1.2586
+Test accuracy: 0.2600
+Logic timer for train time for all layers: 15000
+---------------------------------------------------------------
+Epoch 6:
+  Layer 0: Pos=488.6575, Neg=487.6026, Gap=1.0549
+  Layer 1: Pos=299.5657, Neg=299.5304, Gap=0.0353
+  Layer 2: Pos=9.3883, Neg=9.3875, Gap=0.0008
+  Average total goodness difference: 1.0910
+Test accuracy: 0.2440
+Logic timer for train time for all layers: 18000
+---------------------------------------------------------------
+Epoch 7:
+  Layer 0: Pos=489.0909, Neg=488.1402, Gap=0.9507
+  Layer 1: Pos=299.5966, Neg=299.5686, Gap=0.0280
+  Layer 2: Pos=9.2843, Neg=9.2830, Gap=0.0013
+  Average total goodness difference: 0.9800
+Test accuracy: 0.1950
+Logic timer for train time for all layers: 21000
+---------------------------------------------------------------
+Epoch 8:
+  Layer 0: Pos=490.6778, Neg=489.8672, Gap=0.8106
+  Layer 1: Pos=299.7779, Neg=299.7672, Gap=0.0108
+  Layer 2: Pos=9.1901, Neg=9.1890, Gap=0.0011
+  Average total goodness difference: 0.8224
+Test accuracy: 0.2260
+Logic timer for train time for all layers: 24000
+---------------------------------------------------------------
+Epoch 9:
+  Layer 0: Pos=491.4159, Neg=490.5250, Gap=0.8909
+  Layer 1: Pos=299.7962, Neg=299.7837, Gap=0.0125
+  Layer 2: Pos=9.5328, Neg=9.5322, Gap=0.0006
+  Average total goodness difference: 0.9040
+Test accuracy: 0.2030
+Logic timer for train time for all layers: 27000
+---------------------------------------------------------------
+Epoch 10:
+  Layer 0: Pos=491.6673, Neg=490.9371, Gap=0.7302
+  Layer 1: Pos=299.7860, Neg=299.7778, Gap=0.0082
+  Layer 2: Pos=9.5244, Neg=9.5240, Gap=0.0005
+  Average total goodness difference: 0.7388
+Test accuracy: 0.2170
+Logic timer for train time for all layers: 30000
+---------------------------------------------------------------
+
+training completed, time used: 364.02 second
+
+=== detailed evaluation ===
+accuracy on the test set: 0.2170
+
+sample prediction analysis:
+sample0: true_label=7, predicted_label=7, confidence=0.4093
+sample1: true_label=2, predicted_label=6, confidence=0.2709
+sample2: true_label=1, predicted_label=9, confidence=0.4201
+sample3: true_label=0, predicted_label=7, confidence=0.1987
+sample4: true_label=4, predicted_label=3, confidence=0.2145
+
+ run performance comparison? type 'y' to continue
+
+test completed
